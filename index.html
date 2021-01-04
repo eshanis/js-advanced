@@ -1,0 +1,123 @@
+<html>
+
+<head>
+
+
+    <style>
+        /* ul {
+
+            color: black;
+        }*/
+
+        .menu {
+            background: black;
+            position: relative;
+        }
+
+        .menu ul {
+            list-style: none;
+            text-align: center;
+        }
+
+        .menu li {
+            display: inline-block;
+        }
+
+        .menu a {
+            display: inline-block;
+            text-decoration: none;
+            color: #fff;
+            padding: 15px 10px;
+            text-align: center;
+        }
+
+        #animate {
+            position: absolute;
+            background-color: red;
+            pointer-events: none;
+            border-radius: 10px;
+            width: 70px;
+            height: 35px;
+            opacity: 30%;
+
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <h1>CISW402 : Intermediate JavaScript </h1>
+        <h3>Cosumnes River College: Fall 2020</h3>
+        <h2>Eshani Shah</h2>
+    </center>
+    <hr>
+    <!-- this div is for the links-->
+    <div id="menu" class="menu">
+        <!-- this div is for the bubble-->
+        <div id="animate"> </div>
+        <ul id="ul">
+            <li class="active" id="0"><a href="index.html" target="_blank">Assignment 1 - bubble</a></li>
+            
+            <li id="1"><a href="slide.html" target="_blank">Assignment 2 - Sliding Images</a></li>
+            
+            <li id="2"><a href="zoom.html" target="_blank">Assignment 3 - Zoom Images</a></li>
+            
+            <li id="3"><a href="weather.html" target="_blank">Assignment 4 - Weather Widget</a></li>
+            
+            <li id="4"><a href="dynamicform.html" target="_blank">Assignment 5 - Dymanic Forms</a></li>
+            
+            <li id="5"><a href="jquery.html" target="_blank">Assignment 6</a></li>
+            
+            <li id="6"><a href="build/index.html" target="_blank">Extra credit: React</a></li>
+            
+        </ul>
+    </div>
+
+    <script>
+        document.getElementById("animate").style.left = document.getElementById("0").offsetLeft;
+
+        document.getElementById("animate").style.width = document.getElementById("0").clientWidth;
+
+        document.getElementById("animate").style.height = document.getElementById("0").clientHeight;
+
+        document.getElementById("0").addEventListener("mouseover", animate);
+        document.getElementById("1").addEventListener("mouseover", animate);
+        document.getElementById("2").addEventListener("mouseover", animate);
+        document.getElementById("3").addEventListener("mouseover", animate);
+        document.getElementById("4").addEventListener("mouseover", animate);
+        document.getElementById("5").addEventListener("mouseover", animate);
+
+
+        function myMove(start, end) {
+            var elem = document.getElementById("animate");
+            var current = start;
+            var difference = start - end;
+            console.log("diff", difference);
+            var id = setInterval(frame, 5);
+
+            function frame() {
+                if ((difference < 0 && current > end + 30) || (difference > 0 && current < end - 30)) {
+                    elem.style.left = end;
+                    clearInterval(id);
+                } else {
+                    if (difference < -20) {
+                        console.log("diff -ve, box is to left of clicked li");
+                        current = current + 2;
+                        elem.style.left = current;
+                    }
+                    if (difference > 20) {
+                        console.log("diff +ve, box is to right of clicked li");
+                        current = current - 2;
+                        elem.style.left = current;
+                    }
+                }
+            }
+        }
+
+        function animate() {
+            var start = parseInt(document.getElementById("animate").style.left);
+            var end = document.getElementById(this.id).offsetLeft;
+            myMove(start, end);
+        }
+    </script>
+</body></html>

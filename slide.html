@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Slide Images</title>
+   
+    <style>
+        .outer {
+            overflow-x: hidden;
+            overflow-y: hidden;
+            height: 400px;
+            width: 25%;
+        }
+
+        .container {
+            
+            display: flex;
+            /*transition: transform .4s ease-in;*/
+            /*position: absolute;*/
+        }
+
+        .inner {
+            flex: 0 0 100%;
+            height: 400px;
+            width: 400px;
+            margin: 0px;
+           /* position: relative;*/
+            
+        }
+
+        #button {
+            margin-bottom: 20px;
+        }
+        
+    </style>
+
+
+</head>
+
+<body>
+    <center>
+        <h1>Assignment 2 - Sliding Images</h1>
+        <hr>
+        <nav>
+            <a href="index.html" target="_blank"><b>Home</b></a>
+        </nav>
+        <hr>
+    </center>
+
+    <p>Click button below to move the images</p>
+    <input id="button" type="button" value="Click Me" />
+
+    <div class="outer" id="outer">
+
+        <div id="container" class="container">
+
+            <img src="images/human.jpg">
+            <img src="images/tree.jpg">
+            <img src="images/frog.jpg">
+            <img src="images/building.jpg">
+
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("button").addEventListener("click", init);
+        const container = document.getElementById("container");
+        var translate = 0;
+        var id = null;
+        var increment = -10;
+
+        function init() {
+            setTimeout(myMove, 2000);
+        }
+
+        function myMove() {
+            id = setInterval(animate, 20);
+        }
+
+
+        function animate() {
+            container.style.transform = "translateX(" + translate + "px" + ")";
+
+
+            if ((translate == 0) || (translate == -400) || (translate == -800) || (translate == -1200)) {
+
+                console.log("TRANSLATE***", translate);
+                clearInterval(id);
+                init();
+            }
+            translate = translate + increment;
+            //console.log("Getting ready to translate for next image", translate);
+            if ((translate < -1200) || (translate > 0)) {
+                increment = -1 * increment;
+            }
+
+        }
+    </script>
+
+</body></html>
+
+
+
+

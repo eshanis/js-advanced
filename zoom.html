@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Zoom Images</title>
+<style>
+    #overlay{
+       
+        /*border: 1px solid black;*/
+        width: 350px;
+        height: 200px;
+        display: block;
+        /*background-image: url(images/a.jpg);*/
+        background-repeat: no-repeat;
+        
+    }  
+   
+    #imgzoom{
+        border: 1px solid black;
+    }
+    
+    img {
+        
+    }   
+   
+</style>    
+</head>
+<body >
+    <center>
+        <h1>Assignment 3 - Zoom Images</h1>
+        <hr>
+        <nav>
+            <a href="index.html" target="_blank"><b>Home</b></a>
+        </nav>
+        <hr>
+    </center>
+
+    <img id="original1" width="100px" height="100px" src="images/a.jpg"/>
+    
+  
+    <img id="original2" width="100px" height="100px" src="images/b.jpg"/>
+    
+   
+    <img id="original3" width="100px" height="100px" src="images/c.jpg"/>
+    
+    
+   
+    <div id="overlay" ></div>
+   
+
+
+<script>
+   
+    document.getElementById("original1").addEventListener("mousemove",zoomin);
+    document.getElementById("original1").addEventListener("mouseout",zoomout);
+    
+     document.getElementById("original2").addEventListener("mousemove",zoomin);
+    document.getElementById("original2").addEventListener("mouseout",zoomout);
+   
+     document.getElementById("original3").addEventListener("mousemove",zoomin);
+    document.getElementById("original3").addEventListener("mouseout",zoomout);
+    
+    function zoomout(){
+        var element =document.getElementById("overlay");
+        element.style.display="none";
+    }
+    
+    function zoomin(evt){
+        var element =document.getElementById("overlay");
+        element.style.display="block";
+        element.style.backgroundImage= "url("+ evt.target.currentSrc +")";
+        console.log(evt.target.currentSrc);
+        console.log(element.style.backgroundImage);
+        
+       
+        var posX= evt.clientX? (evt.clientX):evt.pageX-img.offsetLeft;
+       
+        var posY= evt.clientY? (evt.clientY):evt.pageY-img.offsetTop;
+       
+        element.style.backgroundPosition= (-posX*2)+ "px " + (-posY*2)+"px";
+        //console.log("original x:",posX,"oroginal y:",posY);
+        //console.log("new x:",-posX,"new y:",-posY);
+       
+    }
+</script>
+
+</body>
+</html>

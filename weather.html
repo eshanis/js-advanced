@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Weather Widget</title>
+    <link rel="stylesheet" type="text/css" href="ww.css">
+
+</head>
+
+<body>
+    <center>
+        <h1>Assignment 4 - Weather Widget</h1>
+        <hr>
+        <nav>
+            <a href="index.html" target="_blank"><b>Home</b></a>
+        </nav>
+        <hr>
+    </center>
+
+    <div id="ww_container">
+        <div id="ww_main">
+            <h2 id="city"></h2>
+            <img src="images/rainclip.jpg" id="weather_icon"><br><br>
+            <h1 id="temp"></h1>
+            <h1>&#8457;</h1>
+            
+
+            <div id="ww_footer"></div>
+        </div>
+    </div>
+
+    <div id="box1"></div><br>
+    <input type="text" id="cityField">
+    <button id="button">click here</button>
+
+    <!--script src="ww.js"-->
+    <script>
+        document.getElementById("button").addEventListener("click", getweather);
+
+        function getweather() {
+            console.log("my click");
+
+            var city = document.getElementById("cityField").value;
+
+            console.log(city);
+
+
+            var xmlhttp = new XMLHttpRequest();
+            //browser getting ready to send to the server
+            xmlhttp.open("GET", "http://api.openweathermap.org/data/2.5/weather?units=imperial&appid=51187554296a948e9a346787cd1282e8&q=" + city, true);
+            //browser has made the connection and sent to the server
+            xmlhttp.send();
+
+            //server has sent something to the browser
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4) {
+
+                    //response from the server 
+                    console.log(this.responseText);
+
+                    var obj = JSON.parse(this.responseText);
+                    console.log(obj.main.temp);
+
+                    var temp = obj.main.temp;
+                    document.getElementById("temp").innerHTML = temp;
+
+                    if (temp < 40) {
+                        document.getElementById("weather_icon").setAttribute("src","images/snowflakes.jpg");
+                        
+                        document.getElementById("ww_container").style.backgroundImage = "url(images/snow550.jpg)";
+
+                    }
+                    
+                     if (temp > 40  && temp<70) {
+                        document.getElementById("weather_icon").setAttribute("src","images/rainclip.jpg");
+                        
+                        document.getElementById("ww_container").style.backgroundImage = "url(images/rain.jpg)";
+
+                    }
+                    
+                    if (temp > 70) {
+                        document.getElementById("weather_icon").setAttribute("src","images/sun.jpg");
+                        
+                        document.getElementById("ww_container").style.backgroundImage = "url(images/sunny550.jpg)";
+
+                    }
+                }
+
+
+            }
+
+        }
+    </script>
+
+</body></html>

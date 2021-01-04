@@ -1,0 +1,42 @@
+body {
+    background-color: lightcyan;
+    font-family: sans-serif;
+    margin: 10px 10px 10px 10px; 
+    /*background-image: ;
+    background-repeat: no-repeat;*/
+}
+
+h4 {   
+    color: black;
+}
+
+h1 {
+    font-size: 32pt;
+    font-family: serif;
+    color: burlywood;   
+}
+
+img {
+    display: none;
+    width: 600px;
+    height: 400px;
+    float: right;
+}
+
+
+
+/*#showforms {
+    position: absolute;
+    width: 615px;
+    height: 460px;
+    border-style: groove;
+    border-color: black;
+    border-width: thick;
+    left: 180px;
+    top: 180px;
+    background-image: url(images/rain550.jpg);
+    padding: 10px;
+}*/
+
+
+

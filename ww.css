@@ -1,0 +1,73 @@
+#ww_container {
+    width: 550px;
+    height: 440px;
+    background-image: url("images/rain550.jpg");
+    background-repeat: no-repeat;
+    padding-top: 2px;
+    padding-bottom: 20px;
+    opacity: 0.6;
+    border-style: ridge;
+    border-width: 2px;
+    border-color: lightgray;    
+}
+
+#ww_main {
+    margin: 0 auto;
+    width: 250px;
+    height: 230px;
+    background-color: burlywood;
+    color: white;
+    border-radius: 7px;
+    opacity: 0.8;
+    font-family: serif;    
+}
+
+#ww_main h2 {
+    position: relative;
+    left: 10px;
+    top: 10px;
+    font-size: 12pt;
+    width: 150px;
+}
+
+#ww_main h2:hover {
+    position: relative;
+    left: 10px;
+    top: 10px;
+    font-size: 12pt;
+    background-color: red;
+    opacity: 0.5;    
+}
+
+
+#ww_main h1 {
+    position: relative;
+    font-size: 30px;
+    line-height: 0.5;
+    left: 28px;
+    top: 20px;
+    color: black;
+    padding-left: 30px;
+}
+
+#ww_main img {
+    position: relative;
+    float: left;
+    left: 15px;
+    top: 15px;
+}
+
+#weather_icon {
+    width: 120px;
+}
+
+#cityField {
+    height: 35px
+       
+       
+}
+
+#button {
+    padding: 10px;
+}
+
